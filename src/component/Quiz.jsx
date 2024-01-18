@@ -1,10 +1,11 @@
 import { useState, useCallback, useRef } from "react"
 import questions from "../questions"
-import QuizCompleted from "../assets/quiz-complete.png"
 import Question from "./Question"
+import Summary from "./Summary"
 
 const Quiz = () => {
 	const [userAnswer, setUserAnswer] = useState([])
+
 	const activeQuestionIndex = userAnswer.length
 	const quizIsComplete = activeQuestionIndex === questions.length
 
@@ -23,12 +24,7 @@ const Quiz = () => {
 	)
 
 	if (quizIsComplete) {
-		return (
-			<div id='summary'>
-				<img src={QuizCompleted} alt='Quiz complete' />
-				<h2>Quiz Completed</h2>
-			</div>
-		)
+		return <Summary userAnswer={userAnswer} />
 	}
 
 	return (
